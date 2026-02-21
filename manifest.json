@@ -1,0 +1,12 @@
+{
+  "short_name": "Capitan",
+  "name": "Capitan Language Vault",
+  "icons": [
+    { "src": "icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ],
+  "start_url": "./main.html",
+  "background_color": "#2c3e50",
+  "display": "standalone",
+  "theme_color": "#3498db"
+}

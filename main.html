@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" translate="no" class="is-wrapper">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#3498db" />
+    <link rel="stylesheet" href="./app.css" />
+    <title>Capitan Language</title>
+  </head>
+  <body>
+    <div id="selector-screen" class="container">
+      <h1>Capitan Translate</h1>
+      <div class="entry-zone">
+        <div class="selector-row">
+          <select id="src-lang-select" class="lang-mini-select"></select>
+
+          <button id="btn-swap" class="swap-btn" title="Swap Languages">
+            ⇄
+          </button>
+
+          <select id="target-lang-select" class="lang-mini-select"></select>
+        </div>
+
+        <div class="input-row">
+          <div class="input-wrapper">
+            <input
+              type="text"
+              id="input-source"
+              placeholder="Type word here..."
+            />
+            <button id="btn-translate" class="translate-trigger">Go</button>
+          </div>
+        </div>
+      </div>
+      <div id="translation-preview" class="preview-card" style="display: none">
+        <div class="preview-content">
+          <div class="preview-row">
+            <h3 id="prev-source"></h3>
+            <button id="speak-prev-en" class="btn-mini-speak">🔊</button>
+          </div>
+          <div class="preview-row">
+            <p id="prev-target"></p>
+            <button id="speak-prev-target" class="btn-mini-speak">🔊</button>
+          </div>
+        </div>
+        <div class="preview-actions">
+          <button id="btn-confirm-save">Add to Vault</button>
+          <button id="btn-cancel">Cancel</button>
+        </div>
+      </div>
+      <div id="display-prefs-container" class="prefs-bar">
+        <span class="prefs-label">Display Languages:</span>
+      </div>
+      <div class="table-wrapper">
+        <table id="vocab-master-table">
+          <thead>
+            <tr id="table-header-row"></tr>
+          </thead>
+          <tbody id="vocab-body"></tbody>
+        </table>
+      </div>
+
+      <h1>Select Language</h1>
+      <div id="lang-grid" class="lang-grid"></div>
+    </div>
+    <div id="iframe-operators" style="display: none">
+      <button id="back-btn">← Back</button>
+      <button id="download-btn">Download PDF</button>
+    </div>
+
+    <iframe id="content-frame" src="" style="display: none"></iframe>
+    <script src="./jquery-3.7.1.min.js"></script>
+    <script src="./script.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("./sw.js")
+            .then((reg) => console.log("SW registered!", reg))
+            .catch((err) => console.log("SW error", err));
+        });
+      }
+    </script>
+  </body>
+</html>
